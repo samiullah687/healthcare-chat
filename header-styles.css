@@ -12,7 +12,7 @@
   max-width: 600px;
   text-align: center;
   color: #4b5563;
-  transform: scaleX(1.2); /* Stretches text to twice its normal width */
+  /* transform: scaleX(1.2);  */
 }
 
 .header-wrapper h1 {
@@ -71,4 +71,9 @@
   border-radius: 50%;
   animation: scaleFadeDisappear 1s ease-in-out infinite;
   box-shadow: 0 0 8px #22c55e;
+}
+@media (max-width: 780px) {
+  .header-wrapper h1 {
+    font-size: 1.2rem;
+  }
 }

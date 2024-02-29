@@ -178,7 +178,7 @@ button:hover {
   transition: transform 0.3s ease-in-out;
 }
 #main-container {
-  min-height: 50vh !important;
+  min-height: 70vh !important;
 }
 footer {
   align-items: center;
