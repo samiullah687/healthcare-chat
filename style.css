@@ -223,4 +223,12 @@ footer p {
     font-size: 13px;
     font-weight: bold;
   }
+  .online-status {
+    margin-bottom: 0 !important;
+  }
+  .online-status p,
+  .online-status-icon {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+  }
 }
