@@ -73,15 +73,15 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Okay, let me ask you a couple quick questions.",
-          2000
+          800
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Do you make less than $60,000/year? Tap Yes or No.",
-          3000
+          1600
         );
-        showOptions(["Yes", "No"], "income", 4000);
+        showOptions(["Yes", "No"], "income", 1800);
       } else {
         endChat(4000);
       }
@@ -92,9 +92,9 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Are you over or under 65?",
-          2000
+          800
         );
-        showOptions(["Over 65", "Under 65"], "age", 4000);
+        showOptions(["Over 65", "Under 65"], "age", 1000);
       } else {
         endChat(4000);
       }
@@ -105,17 +105,17 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Do you have Medicare parts A and B?",
-          2000
+          800
         );
-        showOptions(["Yes", "No"], "medicare", 4000);
+        showOptions(["Yes", "No"], "medicare", 1000);
       } else if (response === "Under 65") {
         addMessage(
           "bot",
           "images/avatar.webp",
           "Are you on Medicaid or Medicare?",
-          2000
+          800
         );
-        showOptions(["Medicare", "Medicaid", "No"], "healthInsurance", 4000);
+        showOptions(["Medicare", "Medicaid", "No"], "healthInsurance", 1000);
       }
       break;
     case "healthInsurance":
@@ -124,53 +124,53 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Do you have Medicare parts A and B?",
-          2000
+          800
         );
-        showOptions(["Yes", "No"], "medicare", 4000);
+        showOptions(["Yes", "No"], "medicare", 1600);
       } else if (response === "Medicaid") {
-        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 2000);
+        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 800);
         addMessage(
           "bot",
           "images/avatar.webp",
           "Although you don't qualify for the health insurance subsidy, this new program can allow you increase your credit score quickly.",
-          3000
+          1600
         );
-        showOptions(["Increase my credit score!"], "medicare", 4000);
+        showOptions(["Increase my credit score!"], "medicare", 1800);
       } else if (response === "No") {
-        addMessage("bot", "🎉 Congratulations! 🎁", 2000);
+        addMessage("bot", "🎉 Congratulations! 🎁", 800);
         addMessage(
           "bot",
           "images/avatar.webp",
           "You or your family may qualify for up to a $6,400 subsidy as a Healthcare Tax Credit",
-          3000
+          1600
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Tap the number button below to call now to see if you qualify, the initial call only takes a few minutes.",
-          4000
+          2400
         );
-        showOptions(["0800 - 99 23232"], "medicare", 4000);
+        showOptions(["0800 - 99 23232"], "medicare", 2800);
       }
       break;
     case "medicare":
       if (response === "Yes" || response === "No") {
-        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 1000);
+        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 800);
         addMessage(
           "bot",
           "images/avatar.webp",
           "Although you aren’t qualified for a Health Subsidy, agencies are now offering Medicare Advantage coverage in your area.",
-          2000
+          1600
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Call the number below to learn more about what you could qualify for:",
-          3000
+          2400
         );
         response === "Yes"
-          ? showOptions(["0800 - 99 23232"], "medicare", 4000)
-          : showOptions(["Get My Free Phone!"], "medicare", 4000);
+          ? showOptions(["0800 - 99 23232"], "medicare", 2600)
+          : showOptions(["Get My Free Phone!"], "medicare", 2600);
       } else {
         endChat(4000);
       }
@@ -183,7 +183,7 @@ let lastSender = null;
 function addMessage(sender, avatar, text, delay, isInitialMessage = false) {
   if (sender === "bot" && !isInitialMessage) {
     // Add a loading message before the actual message for bot messages, except the first message
-    insertLoadingMessage("images/dots-loadings.gif", delay - 1000); // Show loading gif 500ms before the message
+    insertLoadingMessage("images/dots-loadings.gif", delay - 800); // Show loading gif 500ms before the message
   }
 
   setTimeout(() => {
@@ -299,13 +299,13 @@ function startChat() {
     "bot",
     "images/avatar.webp",
     "I'm Emily from Health Benefits",
-    1000
+    800
   );
   addMessage(
     "bot",
     "images/avatar.webp",
     "Want to find out if you or your family qualify for up to a $6,400 subsidy as a Healthcare Tax Credit? Tap Yes if so! 😊",
-    2000
+    1600
   );
-  showOptions(["Yes"], "initial", 3000);
+  showOptions(["Yes"], "initial", 2400);
 }

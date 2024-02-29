@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/georgia");
+
 .header-wrapper {
   align-items: center;
   display: flex;
@@ -5,9 +7,12 @@
   justify-content: center;
 }
 .header-wrapper h3 {
+  font-family: "Georgia", sans-serif;
+  font-size: 16px;
   max-width: 600px;
   text-align: center;
   color: #4b5563;
+  transform: scaleX(1.2); /* Stretches text to twice its normal width */
 }
 
 .header-wrapper h1 {
