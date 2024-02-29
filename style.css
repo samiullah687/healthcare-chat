@@ -85,7 +85,7 @@ button:hover {
 
 #chat-box {
   height: auto;
-  min-height: 480px;
+  /* min-height: 480px; */
   overflow-y: auto;
   padding: 10px;
 }
@@ -176,6 +176,9 @@ button:hover {
   bottom: 10px; /* Adjust based on your chat layout */
   left: 10px; /* Adjust based on your chat layout */
   transition: transform 0.3s ease-in-out;
+}
+#main-container {
+  min-height: 50vh !important;
 }
 footer {
   align-items: center;
