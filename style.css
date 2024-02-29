@@ -215,3 +215,11 @@ footer p {
 .loadng-bg {
   mix-blend-mode: hard-light !important;
 }
+
+@media (max-width: 780px) {
+  .bot-message,
+  .user-message {
+    font-size: 13px;
+    font-weight: bold;
+  }
+}

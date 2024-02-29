@@ -74,6 +74,11 @@
 }
 @media (max-width: 780px) {
   .header-wrapper h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 0 5%;
+  }
+  .header-wrapper h3 {
+    font-size: 14px;
   }
 }
