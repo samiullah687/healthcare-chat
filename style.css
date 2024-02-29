@@ -218,7 +218,8 @@ footer p {
 
 @media (max-width: 780px) {
   .bot-message,
-  .user-message {
+  .user-message,
+  .online-status p {
     font-size: 13px;
     font-weight: bold;
   }
