@@ -33,10 +33,10 @@ function showOptions(options, stage, delay) {
     options.forEach((option) => {
       let optionElement;
 
-      if (option === "0800 - 99 23232") {
+      if (option === "0400 - 99 23232") {
         // Create an anchor element for the phone number
         optionElement = document.createElement("a");
-        optionElement.href = `tel:${option.replace(/\s/g, "08009923232")}`;
+        optionElement.href = `tel:${option.replace(/\s/g, "04009923232")}`;
         optionElement.textContent = option;
         optionElement.classList.add("option-button");
         optionElement.style.textDecoration = "none";
@@ -59,7 +59,7 @@ function showOptions(options, stage, delay) {
     });
 
     chatBox.appendChild(optionsContainer);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to show the options
+    // chatBox.scrollTop = chatBox.scrollHeight; // Scroll to show the options
   }, delay);
 }
 
@@ -73,17 +73,17 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Okay, let me ask you a couple quick questions.",
-          800
+          400
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Do you make less than $60,000/year? Tap Yes or No.",
-          1600
+          800
         );
-        showOptions(["Yes", "No"], "income", 1800);
+        showOptions(["Yes", "No"], "income", 1000);
       } else {
-        endChat(4000);
+        endChat(400);
       }
       break;
     case "income":
@@ -92,11 +92,11 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Are you over or under 65?",
-          800
+          400
         );
-        showOptions(["Over 65", "Under 65"], "age", 1000);
+        showOptions(["Over 65", "Under 65"], "age", 600);
       } else {
-        endChat(4000);
+        endChat(400);
       }
       break;
     case "age":
@@ -105,17 +105,17 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Do you have Medicare parts A and B?",
-          800
+          400
         );
-        showOptions(["Yes", "No"], "medicare", 1000);
+        showOptions(["Yes", "No"], "medicare", 600);
       } else if (response === "Under 65") {
         addMessage(
           "bot",
           "images/avatar.webp",
           "Are you on Medicaid or Medicare?",
-          800
+          400
         );
-        showOptions(["Medicare", "Medicaid", "No"], "healthInsurance", 1000);
+        showOptions(["Medicare", "Medicaid", "No"], "healthInsurance", 600);
       }
       break;
     case "healthInsurance":
@@ -124,53 +124,54 @@ function handleResponse(response, stage) {
           "bot",
           "images/avatar.webp",
           "Do you have Medicare parts A and B?",
-          800
+          400
         );
-        showOptions(["Yes", "No"], "medicare", 1600);
+        showOptions(["Yes", "No"], "medicare", 800);
       } else if (response === "Medicaid") {
-        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 800);
+        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 400);
         addMessage(
           "bot",
           "images/avatar.webp",
           "Although you don't qualify for the health insurance subsidy, this new program can allow you increase your credit score quickly.",
-          1600
+          800
         );
-        showOptions(["Increase my credit score!"], "medicare", 1800);
+        showOptions(["Increase my credit score!"], "medicare", 1000);
       } else if (response === "No") {
-        addMessage("bot", "🎉 Congratulations! 🎁", 800);
+        addMessage("bot", "images/avatar.webp", "🎉 Congratulations! 🎁", 400);
         addMessage(
           "bot",
           "images/avatar.webp",
           "You or your family may qualify for up to a $6,400 subsidy as a Healthcare Tax Credit",
-          1600
+          800
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Tap the number button below to call now to see if you qualify, the initial call only takes a few minutes.",
-          2400
+          1200
         );
-        showOptions(["0800 - 99 23232"], "medicare", 2800);
+        showOptions(["0400 - 99 23232"], "medicare", 1400);
       }
       break;
+
     case "medicare":
       if (response === "Yes" || response === "No") {
-        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 800);
+        addMessage("bot", "images/avatar.webp", "Great News! 🎉", 400);
         addMessage(
           "bot",
           "images/avatar.webp",
           "Although you aren’t qualified for a Health Subsidy, agencies are now offering Medicare Advantage coverage in your area.",
-          1600
+          800
         );
         addMessage(
           "bot",
           "images/avatar.webp",
           "Call the number below to learn more about what you could qualify for:",
-          2400
+          1200
         );
         response === "Yes"
-          ? showOptions(["0800 - 99 23232"], "medicare", 2600)
-          : showOptions(["Get My Free Phone!"], "medicare", 2600);
+          ? showOptions(["0400 - 99 23232"], "medicare", 1400)
+          : showOptions(["Get My Free Phone!"], "medicare", 1400);
       } else {
         endChat(4000);
       }
@@ -183,7 +184,7 @@ let lastSender = null;
 function addMessage(sender, avatar, text, delay, isInitialMessage = false) {
   if (sender === "bot" && !isInitialMessage) {
     // Add a loading message before the actual message for bot messages, except the first message
-    insertLoadingMessage("images/dots-loadings.gif", delay - 800); // Show loading gif 500ms before the message
+    insertLoadingMessage("images/dots-loadings.gif", delay - 400); // Show loading gif 500ms before the message
   }
 
   setTimeout(() => {
@@ -234,7 +235,7 @@ function addMessage(sender, avatar, text, delay, isInitialMessage = false) {
     chatBox.appendChild(messageContainer);
     lastSender = sender;
 
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    // window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }, delay);
 }
 
@@ -262,7 +263,7 @@ function insertLoadingMessage(avatar, delay) {
 
     loadingContainer.appendChild(loadingMessage);
     chatBox.appendChild(loadingContainer);
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    // window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
     // Apply ::after styles through JavaScript since ::after cannot be directly used with JavaScript
     const afterElement = document.createElement("div");
@@ -299,13 +300,13 @@ function startChat() {
     "bot",
     "images/avatar.webp",
     "I'm Emily from Health Benefits",
-    800
+    400
   );
   addMessage(
     "bot",
     "images/avatar.webp",
     "Want to find out if you or your family qualify for up to a $6,400 subsidy as a Healthcare Tax Credit? Tap Yes if so! 😊",
-    1600
+    800
   );
-  showOptions(["Yes"], "initial", 2400);
+  showOptions(["Yes"], "initial", 1000);
 }
